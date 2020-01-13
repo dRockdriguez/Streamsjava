@@ -1,8 +1,0 @@
-package ejemplo.cuatro.streams;
-
-public class Main {
-	private List<User> users;
-	public static void main(String[] args) {
-		
-	}
-}

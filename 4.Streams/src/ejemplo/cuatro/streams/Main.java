@@ -2,6 +2,7 @@ package ejemplo.cuatro.streams;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -78,10 +79,61 @@ public class Main {
 		System.out.println();
 		System.out.println("SKIP Y LIMIT");
 		System.out.println("************************************");
-		String [] abc = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "ñ", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
+		String[] abc = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "ñ", "o", "p", "q", "r",
+				"s", "t", "u", "v", "w", "x", "y", "z" };
 
 		List<String> abcFilter = Arrays.stream(abc).skip(2).limit(3).collect(Collectors.toList());
 		abcFilter.stream().forEach(e -> System.out.println(e));
+
+		// Sorted
+		System.out.println();
+		System.out.println("SORTED");
+		System.out.println("************************************");
+		setUpUsers();
+		users = users.stream().sorted(Comparator.comparing(User::getName)).collect(Collectors.toList());
+		imprimirLista();
+
+		// min y max
+		System.out.println();
+		System.out.println("MIN Y MAX");
+		System.out.println("************************************");
+		setUpUsers();
+		User min = users.stream().min(Comparator.comparing(User::getId)).orElse(new User(0, "No existe"));
+		System.out.println("Min: " + min);
+		User max = users.stream().max(Comparator.comparing(User::getId)).orElse(new User(0, "No existe"));
+		System.out.println("Max: " + max);
+
+		// distinct
+		System.out.println();
+		System.out.println("DISTINCT");
+		System.out.println("************************************");
+		setUpUsers();
+
+		List<User> d = users.stream().distinct().collect(Collectors.toList());
+		d.stream().forEach(e -> System.out.println(e));
+
+		// allmatch, any match, nonematch
+		System.out.println();
+		System.out.println("ALLMATCH, ANYMATCH, NONEMATCH");
+		System.out.println("************************************");
+		List<Integer> numeros = Arrays.asList(1000, 300, 900, 5000);
+		boolean allMatch = numeros.stream().allMatch(num -> num > 301);
+		boolean anyMatch = numeros.stream().anyMatch(num -> num > 301);
+		boolean noneMatch = numeros.stream().noneMatch(num -> num > 300001);
+		System.out.println("ALL MATCH " + allMatch);
+		System.out.println("ANY MATCH " + anyMatch);
+		System.out.println("NONE MATCH " + noneMatch);
+
+		// sum, average, range
+		System.out.println();
+		System.out.println("SUM, AVERAGE, RANGE");
+		System.out.println("************************************");
+		setUpUsers();
+		double resultSum = users.stream().mapToInt(User::getId).sum();
+		System.out.println("SUM de ids: " + resultSum);
+
+		double resultAverage = users.stream().mapToInt(User::getId).average().orElse(0);
+		System.out.println("Media de ids: " + resultAverage);
 	}
 
 	private static void setUpUsers() {
