@@ -1,0 +1,17 @@
+package ejemplo.tres.optional;
+
+import java.util.Optional;
+
+public class Main {
+	public static void main (String [] args) {
+		probarOptional(null);
+	}
+	
+	public static void probarOptional(String nombre) {
+		
+	}
+	
+	public static void crearOptional() {
+		Optional<String> opt = Optional.empty();
+	}
+}

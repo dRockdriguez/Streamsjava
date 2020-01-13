@@ -1,0 +1,7 @@
+package ejemplo.cuatro.streams;
+
+public class User {
+	private int id;
+	private String name;
+	
+}

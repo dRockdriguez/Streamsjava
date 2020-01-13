@@ -1,0 +1,29 @@
+package ejemplo.dos.referenciametodos;
+
+public class Main {
+	public static void main(String args []) {
+		// Referencias a métodos estaticos
+		Trabajo t = new Trabajo() {
+			@Override
+			public void accion() {
+				User.referenciaMetodoEstatico();
+			}			
+		};
+		t.accion();
+		
+		// Lambda
+		Trabajo t1 = () -> User.referenciaMetodoEstatico();
+		t1.accion();
+		
+		// Referencia a static method
+		Trabajo t2 = User::referenciaMetodoEstatico;
+		t2.accion();
+		
+		
+		
+		
+		
+		//Referencia a método de instancia
+		User u = new User("Manolo");
+	}
+}

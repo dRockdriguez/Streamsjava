@@ -1,0 +1,15 @@
+package ejemplo.cuatro.streams;
+
+import java.util.List;
+
+public class Main {
+	private List<User> users;
+	
+	public static void main(String[] args) {
+		
+	}
+	
+	private static void setUpUsers() {
+		users = ArrayList<User>();
+	}
+}

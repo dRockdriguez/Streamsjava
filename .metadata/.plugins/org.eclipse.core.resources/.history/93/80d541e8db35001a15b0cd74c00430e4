@@ -1,0 +1,25 @@
+package ejemplo.cuatro.streams;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Stream;
+
+public class Main {
+	private static List<User> users;
+
+	public static void main(String[] args) {
+		setUpUsers();
+
+		users.stream().forEach((user)-> System.out.println(user.getName());
+	}
+
+	private static void setUpUsers() {
+		users = new ArrayList<>();
+		users.add(new User(1, "Alberto"));
+		users.add(new User(2, "Marta"));
+		users.add(new User(3, "Maria"));
+		users.add(new User(4, "Pablo"));
+		users.add(new User(5, "Adolfo"));
+		users.add(new User(6, "Alberto"));
+	}
+}
