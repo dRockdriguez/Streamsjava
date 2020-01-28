@@ -1,7 +1,0 @@
-package ejemplo.uno.lambda;
-
-public interface Suma {
-	public int suma(int a, int b);
-	public int suma1(int a, int b);
-}
-

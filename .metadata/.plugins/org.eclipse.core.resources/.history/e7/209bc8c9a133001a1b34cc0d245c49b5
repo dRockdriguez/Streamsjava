@@ -1,7 +1,0 @@
-package ejemplo.dos.referenciametodos;
-
-public class User {
-	private String nombre;
-	
-	
-}

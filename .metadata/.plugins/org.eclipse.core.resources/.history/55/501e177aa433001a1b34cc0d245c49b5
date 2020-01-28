@@ -1,5 +1,0 @@
-package ejemplo.dos.referenciametodos;
-
-public interface IUser {
-	User crear(String nombre);
-}

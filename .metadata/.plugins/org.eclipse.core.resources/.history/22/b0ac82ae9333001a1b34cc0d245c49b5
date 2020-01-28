@@ -1,8 +1,0 @@
-package ejemplo.uno.lambda;
-
-public class Lambda {
-
-	public static void main(String args []) {
-		MiNombre nombre = new MiNombre();
-	}
-}
