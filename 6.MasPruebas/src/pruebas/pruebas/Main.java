@@ -39,16 +39,16 @@ public class Main {
 
 		List<Integer> n = Arrays.asList(5, -5, 2, -2, 7, -7, 0, 12, -24, 32, -64, 128);
 
-		BiFunction<List<Integer>, Predicate<Integer>, List<Integer>> filtrar = (list, predicado) -> {
-			List<Integer> r = new ArrayList<>();
-			for (Integer i : list) {
-				if (predicado.test(i)) {
-					r.add(i);
-				}
-			}
-			return r;
+		System.out.println(filter(x -> x > 0, n));
+		System.out.println(filter(x -> x < 0, n));
+		System.out.println(filter(x -> x > 10, n));
+	}
+
+	static List<Integer> filter(Predicate<Integer> pred, List<Integer> list) {
+		BiFunction<List<Integer>, Predicate<Integer>, List<Integer>> filtrar = (l, predicado) -> {
+			return l.stream().filter(predicado).collect(Collectors.toList());
 		};
-		System.out.println(filtrar.apply(n, x -> x > 0));
+		return filtrar.apply(list, pred);
 	}
 
 	static boolean esPar(int n) {
