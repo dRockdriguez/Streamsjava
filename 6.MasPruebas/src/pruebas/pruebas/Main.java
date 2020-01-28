@@ -3,6 +3,8 @@ package pruebas.pruebas;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.BiFunction;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class Main {
@@ -34,6 +36,19 @@ public class Main {
 
 		Suma sum = (n1, n2) -> n1 + n2;
 		System.out.println(sum.suma(3, 2));
+
+		List<Integer> n = Arrays.asList(5, -5, 2, -2, 7, -7, 0, 12, -24, 32, -64, 128);
+
+		BiFunction<List<Integer>, Predicate<Integer>, List<Integer>> filtrar = (list, predicado) -> {
+			List<Integer> r = new ArrayList<>();
+			for (Integer i : list) {
+				if (predicado.test(i)) {
+					r.add(i);
+				}
+			}
+			return r;
+		};
+		System.out.println(filtrar.apply(n, x -> x > 0));
 	}
 
 	static boolean esPar(int n) {
